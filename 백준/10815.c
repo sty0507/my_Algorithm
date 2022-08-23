@@ -1,28 +1,36 @@
 #include<stdio.h>
+#include<stdlib.h>
 int arr[20000000];
-int result[500000];
-int Search(int m, int a){
+void Search(int a, int n){
 	int i;
-	for(i=0;i<m;i++){
+	for(i=0;i<n;i++){
 		if(arr[i] == a){
-			return 1;
+			printf("1 ");
+			return;
 		}
 	}
-	return 0;
+	printf("0 ");
+	return;
+}
+int compare(const int *a, const int *b){
+	if(*a < *b)
+		return -1;
+	else if(*a>*b)
+		return 1;
+	else return 0;
 }
 int main(){
-	int n, m, i, a;
+	int n,m,i,a;
 	scanf("%d", &n);
 	for(i=0;i<n;i++){
 		scanf("%d", &arr[i]);
 	}
+	qsort(arr, n, sizeof(int), compare);
 	scanf("%d", &m);
 	for(i=0;i<m;i++){
 		scanf("%d", &a);
-		result[i] = Search(n, a);
-	}
-	for(i=0;i<m;i++){
-		printf("%d ", result[i]);
+		Search(a,n);
 	}
 	return 0;
 }
+
