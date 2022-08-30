@@ -1,29 +1,34 @@
-#include<stdio.h>
-int arr[4];
-int direction[2][4];
-int main(){
-	int n, sum = 0, j;
-	int dir, dis;
-	int h=0, w=0,h1=0, w1=0;
-	scanf("%d", &n);
-	for(int i=0;i<6;i++){
-		j = 0;
-		scanf("%d %d", &dir, &dis);
-		if(arr[dir-1] == 1){
-			j++;
-			direction[dir-1][j] = dis;
-		}
-		arr[dir-1] ++;
-	}
-	for(int i=0;i<4;i++){
-		for(int j=0;j<arr[i];j++){
-			if(i == 0 || i == 1){
-				h += arr[i][j];
-			}
-			else{
-				w += arr[i][j];
-			}
-		}
-	}
+#include <stdio.h>
+
+int n;
+int direction[6 + 2][2 + 2];
+int cnt[4];
+
+int main() {
+    
+    int s = 1;
+    int b = 1;
+
+    scanf("%d", &n);
+    for (int i = 0; i < 6; i++) {
+        scanf("%d %d", &direction[i][0], &direction[i][1]);
+        cnt[direction[i][0]]++;
+    }
+
+    for (int i = 0; i < 6; i++) {
+
+        if (cnt[direction[i][0]] == 1) {
+            b *= direction[i][1]; 
+            continue;
+        }
+
+        int n = (i + 1) % 6;
+        int nn = (i + 2) % 6;
+        if (direction[i][0] == direction[nn][0]) s *= direction[n][1];
+    }
+
+    printf("%d", (b - s) * n);
+
+    return 0;
 }
 
