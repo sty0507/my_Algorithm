@@ -11,6 +11,7 @@ for i in range(n-1):
 for i in range(n-1):
     if arr[i] <= arr[i+1]:
         dp2[i+1] += dp2[i]
-print(max(max(dp1, dp2)))
 
-    
+max1 = max(dp1)
+max2 = max(dp2)
+print(max(max1, max2))
