@@ -17,3 +17,7 @@ def solution(answers):
         if max(students) == m:
             answer.append(idx+1)
     return answer            
+"""
+반복되는 답을 리스트로 생성 후에 접근
+학생의 답보다 문제가 길 수 있으니 % 연산을 이용
+"""
