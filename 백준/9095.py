@@ -1,3 +1,4 @@
+"""
 dp = [0,1,2,4]
 def sol(n):
     if n == 1:
@@ -17,3 +18,14 @@ for i in range(0, t):
     for j in range(0, n+1):
         dp[j] = sol(j)
     print("%d"%dp[j])
+"""
+
+import sys
+dp = [0, 1, 2, 4]
+t = int(sys.stdin.readline())
+for _ in range(t):
+    n = int(sys.stdin.readline())
+    if len(dp) < n+1:
+        for i in range(len(dp), n+1):
+            dp.append(dp[i - 3] + dp[i - 2] + dp[i - 1])
+    print(dp[n])
