@@ -13,7 +13,7 @@ cost.sort(reverse=True)
 for i in range(len(cost)):
     if k == 0:
         break
-    result += int(k / cost[i])
+    result += k / cost[i]
     k %= cost[i]
 
-print(result)
+print(cost)
