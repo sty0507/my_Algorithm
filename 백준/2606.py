@@ -20,10 +20,17 @@ def bfs(start, graph, visited):
     # 큐의 시작을 [start]로 여기서는 1이다.
     # 1부터 탐색을 하겠다는 뜻이다.
     queue = deque([start])
+    # visited의 1번 인덱스를 True로 바꿔줘서 이미 방문을 했다는 것을 알려준다.
     visited[start] = True
+    # queue에 값이 있는 동안 반복문을 실행한다.
     while queue:
+        # 큐의 제일 왼쪽값을 v에 뽑는다.
         v = queue.popleft()
+        # 그러고 일단 cnt에 1 추가한다.
         cnt += 1
+        # 해당 값의 graph, 연결되어 있는 노드들을 다 일일이 검사를 한다.
+        # 만약 방문한 적이 없다면 나중에 방문을 위해 queue에 넣는다.
+        # 그러고 방문을 할 것이기 때문에 visited의 i번 인덱스의 값을 True로 바꾼다.
         for i in graph[v]:
             if not visited[i]:
                 queue.append(i)
